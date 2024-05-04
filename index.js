@@ -1,0 +1,39 @@
+ 
+const { connectToDataBase } = require('./connection')
+
+const express = require('express')
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+
+// Define our Express Instance
+const app = express()
+// We choose the port based on the mode
+let PORT;
+process.env.STATUS === 'dev' ? PORT = process.env.DEV_PORT : PORT = process.env.PROD_PORT
+
+
+// We define our Middlewares
+
+
+
+
+// Connecting to Database returns a promise and prints an error if occured
+connectToDataBase(process.env.MONGO_URL_DEV)
+.then(()=>{console.log("Connected to Database")})
+.catch((err)=>{console.log("There Was an error",err)})
+
+
+// We define our api routes
+
+
+
+
+// Server starts listening on the given port with the above config
+process.env.STATUS === 'dev' ? app.listen(PORT,()=>console.log(`Listening on ${PORT}`)) : app.listen(PORT)
+
+
+
+
+
+
