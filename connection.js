@@ -6,7 +6,7 @@ async function connectToDataBase(url){
         let res = mongoose.connect(url)
         return res
     }catch(err){
-        console.log(`an error occured in connecting to Database ${err}`)
+        console.log(`Database Connection Error : ${err}`)
     }
     
 }

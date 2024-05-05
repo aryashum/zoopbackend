@@ -19,7 +19,9 @@ process.env.STATUS === 'dev' ? PORT = process.env.DEV_PORT : PORT = process.env.
 
 
 // Connecting to Database returns a promise and prints an error if occured
-connectToDataBase(process.env.MONGO_URL_DEV)
+let DB_URL;
+process.env.STATUS === 'dev' ? DB_URL = process.env.MONGO_URL_DEV : DB_URL = process.env.MONGO_URL_PROD
+connectToDataBase(DB_URL)
 .then(()=>{console.log("Connected to Database")})
 .catch((err)=>{console.log("There Was an error",err)})
 
