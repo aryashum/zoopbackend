@@ -27,6 +27,14 @@ connectToDataBase(DB_URL)
 
 
 // We define our api routes
+const {userRouter} = require('./routes/userRouter.js')
+const {storeRouter} = require('./routes/storeRouter.js')
+
+//This Route deals with all user related activities
+app.use('/user',userRouter)
+
+//This route deals with all store related activities
+app.use('/store',storeRouter)
 
 
 
