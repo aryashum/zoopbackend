@@ -1,12 +1,15 @@
+const { type } = require("express/lib/response");
 const { default: mongoose } = require("mongoose");
 
 const paymentSchema = mongoose.Schema({
 
     amount:{
-
+        type: Number,
+        required: true
     },
     paymentDate:{
-        type: Date
+        type: Date,
+        required: true
     },
     storeId:{
         type: mongoose.Schema.ObjectId,
