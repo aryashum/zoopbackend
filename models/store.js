@@ -10,6 +10,10 @@ const storeSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    password:{
+        type: String,
+        required:true,
+    },
     rating:{
         type:Number,
         default:0  
