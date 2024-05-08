@@ -14,6 +14,7 @@ process.env.STATUS === 'dev' ? PORT = process.env.DEV_PORT : PORT = process.env.
 
 
 // We define our Middlewares
+app.use(express.urlencoded({extended : true}))
 
 
 

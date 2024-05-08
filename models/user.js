@@ -1,7 +1,7 @@
 
 // TODO : Define the user schema according to Docs
 
-const { type } = require('express/lib/response')
+
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
@@ -12,7 +12,8 @@ const userSchema = mongoose.Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     password:{
         type:String,
@@ -24,13 +25,13 @@ const userSchema = mongoose.Schema({
     },
     favouriteProducts: [
         {
-            storeId: mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'product'
         }
     ],
     favouriteStores: [
         {
-            storeId: mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'store'
         }
     ]
