@@ -9,7 +9,7 @@ async function createCategory(req, res) {
 
     return res.status(201).send({ message: new_category });
   } catch (error) {
-    return res.status(201).send({ message: new_category });
+    return res.status(201).send({ message: null });
   }
 }
 
