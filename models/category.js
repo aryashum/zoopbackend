@@ -5,7 +5,10 @@ const categorySchema = mongoose.Schema({
     name:{
         type: String,
         required: true,
-        unique: true
+    },
+    storeId: {
+        type: mongoose.Schema.ObjectId,
+        ref:'store'
     }
 
 })

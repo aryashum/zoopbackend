@@ -3,6 +3,7 @@
 
 const { type } = require("express/lib/response");
 const mongoose = require("mongoose");
+const { category } = require("./category");
 
 const storeSchema = mongoose.Schema({
 
@@ -37,8 +38,14 @@ const storeSchema = mongoose.Schema({
     adminName:{
         type:String,
         required:true
-    }
-
+    },
+    categories:[
+        {
+            type: mongoose.Schema.ObjectId,
+            ref:'category'
+        }
+    ]
+    
 },{timestamps:true})
 
 

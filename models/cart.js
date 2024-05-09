@@ -23,4 +23,10 @@ const cartSchema = mongoose.Schema({
             required:true
         }
     ]
-})
+},{timestamps:true})
+
+const cart = mongoose.model('cart',cartSchema)
+
+module.exports = {
+    cart
+}

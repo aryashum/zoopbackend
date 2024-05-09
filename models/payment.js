@@ -7,10 +7,7 @@ const paymentSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    paymentDate:{
-        type: Date,
-        required: true
-    },
+
     storeId:{
         type: mongoose.Schema.ObjectId,
         ref: 'store'

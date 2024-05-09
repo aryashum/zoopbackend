@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
 
     name: {
         type:String,
-        required: true
+        required: true,
     },
     isAvailable: {
         type:Boolean,
@@ -27,7 +27,7 @@ const productSchema = mongoose.Schema({
         type:Number,
         required: true,
     },
-    photo:{
+    image:{
         type:String,
     },
     storeId:{
