@@ -23,7 +23,10 @@ async function createCart(req,res){
 
 async function getCartByStoreId(req,res){
 
-    
+    const carts = await cart.findById(req.body.id)
+
+    return res.send({"message": carts})
+
 }
 
 module.exports = {

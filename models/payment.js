@@ -1,23 +1,23 @@
 const { type } = require("express/lib/response");
 const { default: mongoose } = require("mongoose");
 
-const paymentSchema = mongoose.Schema({
-
-    amount:{
-        type: Number,
-        required: true
+const paymentSchema = mongoose.Schema(
+  {
+    amount: {
+      type: Number,
+      required: true,
     },
 
-    storeId:{
-        type: mongoose.Schema.ObjectId,
-        ref: 'store'
-    }
+    storeId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "store",
+    },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true})
-
-const payment = mongoose.model('payment', paymentSchema)
+const payment = mongoose.model("payment", paymentSchema);
 
 module.exports = {
-    payment
-}
-
+  payment,
+};
