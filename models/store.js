@@ -39,13 +39,7 @@ const storeSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    categories:[
-        {
-            type: mongoose.Schema.ObjectId,
-            ref:'category'
-        }
-    ]
-    
+
 },{timestamps:true})
 
 
