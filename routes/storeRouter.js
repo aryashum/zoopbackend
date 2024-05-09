@@ -16,13 +16,19 @@ const {
 } = require("../controllers/categoryControl");
 
 // Define sub route for store signin
-storeRouter.route("/signin").post(checkIfStoreExists);
+storeRouter.route("/signin")
+.post(checkIfStoreExists);
 
 // Define sub route for store signup
-storeRouter.route("/signup").post(createStoreAccount);
+storeRouter.route("/signup")
+.post(createStoreAccount);
 
-storeRouter.route("/product").get(getProductsByStoreId).post(createProduct);
+storeRouter.route("/product")
+.get(getProductsByStoreId)
+.post(createProduct);
 
-storeRouter.route("/category").get(getCategoriesByStoreId).post(createCategory);
+storeRouter.route("/category")
+.get(getCategoriesByStoreId)
+.post(createCategory);
 
 module.exports = { storeRouter };
