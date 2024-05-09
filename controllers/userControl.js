@@ -1,8 +1,8 @@
 
 
-const { default: mongoose } = require('mongoose')
+const { default: mongoose, get } = require('mongoose')
 const {user} = require('../models/user')
-
+const { cart } = require('../models/cart')
 
 async function createUserAccount(req,res) {
 
@@ -14,7 +14,6 @@ async function createUserAccount(req,res) {
         phoneNumber:req.body.phoneNumber,
 
     })
-
 
     // TODO : return the created user object
     return res.status(201).send(new_user)
@@ -32,5 +31,6 @@ async function checkIfUserExists(req,res) {
 
 module.exports = {
     createUserAccount,
-    checkIfUserExists
+    checkIfUserExists,
+    
 }

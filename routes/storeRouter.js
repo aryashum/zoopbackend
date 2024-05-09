@@ -2,7 +2,9 @@ const express = require('express')
 
 const storeRouter = express.Router()
 
-const {createStoreAccount,checkIfStoreExists,createProduct,createCategory,getCategoriesByStoreId,getProductsByStoreId} = require('../controllers/storeController')
+const {createStoreAccount,checkIfStoreExists} = require('../controllers/storeControl')
+const {createProduct,getProductsByStoreId} = require('../controllers/productControl')
+const {createCategory,getCategoriesByStoreId} = require('../controllers/categoryControl')
 
 // Define sub route for store signin
 storeRouter.route('/signin')

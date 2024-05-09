@@ -22,7 +22,12 @@ const cartSchema = mongoose.Schema({
             ref: 'product',
             required:true
         }
-    ]
+    ],
+    isPaid:{
+        type: Boolean,
+        default:false
+    }
+    
 },{timestamps:true})
 
 const cart = mongoose.model('cart',cartSchema)
