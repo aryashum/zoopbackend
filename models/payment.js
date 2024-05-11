@@ -1,7 +1,7 @@
 const { type } = require("express/lib/response");
 const { default: mongoose } = require("mongoose");
 
-const paymentSchema = mongoose.Schema(
+const storePaymentSchema = mongoose.Schema(
   {
     amount: {
       type: Number,
@@ -16,8 +16,8 @@ const paymentSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const payment = mongoose.model("payment", paymentSchema);
+const storePayment = mongoose.model("payment", paymentSchema);
 
 module.exports = {
-  payment,
+  storePayment,
 };
