@@ -15,18 +15,25 @@ async function createStoreAccount(req, res) {
 
     return res.status(201).send(new_store);
   } catch (error) {
-    return res.status(400).send({ message: null });
+    return res.status(400).send(null);
   }
 }
 
 async function checkIfStoreExists(req, res) {
-  const isPresent = await store.findOne({
-    email: req.body.email,
-    password: req.body.password,
-  });
 
-  // TODO : return the object if exists, null if doesnt
-  return res.status(201).send({ message: isPresent });
+  try {
+    const isPresent = await store.findOne({
+      email: req.body.email,
+      password: req.body.password,
+    });
+  
+    // TODO : return the object if exists, null if doesnt
+    return res.status(201).send(isPresent);
+    
+  } catch (error) {
+    return res.status(400).send(null);
+  }
+
 }
 
 module.exports = {

@@ -15,6 +15,10 @@ const {
   getCategoriesByStoreId,
 } = require("../controllers/categoryControl");
 
+const {
+  getCartByStoreId
+} = require('../controllers/cartControl')
+
 // Define sub route for store signin
 storeRouter.route("/signin")
 .post(checkIfStoreExists);
@@ -30,5 +34,8 @@ storeRouter.route("/product")
 storeRouter.route("/category")
 .get(getCategoriesByStoreId)
 .post(createCategory);
+
+storeRouter.route("/cart")
+.get(getCartByStoreId)
 
 module.exports = { storeRouter };
