@@ -19,9 +19,13 @@ async function createProduct(req, res) {
 }
 
 async function getProductsByStoreId(req, res) {
-  const products = await product.find({ storeId: req.body.storeId });
-
-  return res.status(200).send(products);
+  
+  try {
+    const products = await product.find({ storeId: req.body.storeId });
+    return res.status(200).send(products);
+  }catch (error) {
+    return res.status(400).send(null) 
+  }
 }
 
 module.exports = {

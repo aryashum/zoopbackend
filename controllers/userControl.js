@@ -16,14 +16,20 @@ async function createUserAccount(req, res) {
 }
 
 async function checkIfUserExists(req, res) {
-  // TODO : check if schema with particular values is present or not
-  const isPresent = await user.findOne({
-    email: req.body.email,
-    password: req.body.password,
-  });
 
-  // TODO : return true if yes else false
-  return res.status(201).send(isPresent);
+  try {
+    
+    // TODO : check if schema with particular values is present or not
+    const isPresent = await user.findOne({
+      email: req.body.email,
+      password: req.body.password,
+    });
+  
+    // TODO : return true if yes else false
+    return res.status(201).send(isPresent);
+  } catch (error) {
+    return res.status(400).send(null)
+  }
 }
 
 module.exports = {
