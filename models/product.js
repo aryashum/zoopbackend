@@ -12,6 +12,11 @@ const productSchema = mongoose.Schema({
     required: true,
     default: false,
   },
+  isVeg: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   category: {
     type: mongoose.Schema.ObjectId,
     ref: "category",

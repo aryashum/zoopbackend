@@ -7,20 +7,28 @@ async function createCategory(req, res) {
       storeId: req.body.storeId,
     });
 
-    return res.status(201).send({ message: new_category });
+    return res.status(201).send(new_category);
   } catch (error) {
-    return res.status(201).send({ message: null });
+    return res.status(201).send(null);
   }
 }
 
 async function getCategoriesByStoreId(req, res) {
-  const projection = { _id: 1, name: 1 };
 
-  const categories = await category
-    .find({ storeId: req.body.storeId })
-    .select(projection);
+  try {
+    
+    const projection = { _id: 1, name: 1 };
+  
+    const categories = await category
+      .find({ storeId: req.body.storeId })
+      .select(projection);
+  
+    return res.status(200).send(categories);
 
-  return res.status(200).send({ message: categories });
+
+  } catch (error) {
+    return res.status(400).send(null)
+  }
 }
 
 module.exports = {

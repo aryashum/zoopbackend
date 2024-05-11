@@ -15,7 +15,7 @@ async function createStoreAccount(req, res) {
 
     return res.status(201).send(new_store);
   } catch (error) {
-    return res.status(400).send({ message: null });
+    return res.status(400).send(null);
   }
 }
 
@@ -26,7 +26,7 @@ async function checkIfStoreExists(req, res) {
   });
 
   // TODO : return the object if exists, null if doesnt
-  return res.status(201).send({ message: isPresent });
+  return res.status(201).send(isPresent);
 }
 
 module.exports = {

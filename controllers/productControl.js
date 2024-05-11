@@ -9,19 +9,19 @@ async function createProduct(req, res) {
       price: req.body.price,
       storeId: req.body.storeId,
       image: req.body.image,
+      isVeg: req.body.isVeg
     });
-
     // We return the created object , null if not created
-    return res.status(201).send({ message: new_product });
+    return res.status(201).send(new_product);
   } catch (error) {
-    return res.status(400).send({ message: null });
+    return res.status(400).send(null);
   }
 }
 
 async function getProductsByStoreId(req, res) {
   const products = await product.find({ storeId: req.body.storeId });
 
-  return res.status(200).send({ message: products });
+  return res.status(200).send(products);
 }
 
 module.exports = {

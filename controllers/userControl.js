@@ -23,7 +23,7 @@ async function checkIfUserExists(req, res) {
   });
 
   // TODO : return true if yes else false
-  return res.status(201).send({ message: isPresent });
+  return res.status(201).send(isPresent);
 }
 
 module.exports = {
