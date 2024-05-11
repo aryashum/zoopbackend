@@ -1,11 +1,9 @@
 
-const { default: mongoose } = require("mongoose");
 const { cart } = require("../models/cart")
 
 
 async function createCart(req,res){
 
-    const ObjectId = mongoose.Types.ObjectId
 
     try {
 
@@ -30,13 +28,10 @@ async function getCartByStoreId(req,res){
 
     try {
         const carts = await cart.find({'storeId':req.body.storeId})    
-        return res.send(carts)
+        return res.send(carts).status(200)
     } catch (error) {
         return res.send(null).status(400)
     }
-    
-
-    
 
 }
 
