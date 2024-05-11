@@ -27,6 +27,10 @@ const cartSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isReadyToServe: {
+      type: Boolean,
+      default:false
+    }
   },
   { timestamps: true }
 );
