@@ -30,7 +30,23 @@ const cartSchema = mongoose.Schema(
     isReadyToServe: {
       type: Boolean,
       default:false
-    }
+    },
+    totalAmount:{
+      type: Number,
+      required: true
+    },
+    razorpayPaymentId:{
+      type: String,
+      default:""
+    },
+    razorpayOrderId:{
+      type: String,
+      default: ""
+    },
+    razorpaySignature:{
+      type: String,
+      default: ""
+    },
   },
   { timestamps: true }
 );
