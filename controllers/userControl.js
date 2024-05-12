@@ -4,15 +4,20 @@ const { cart } = require("../models/cart");
 
 async function createUserAccount(req, res) {
   // TODO : instantiate user schema with particular values present in request
-  const new_user = await user.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    phoneNumber: req.body.phoneNumber,
-  });
-
-  // TODO : return the created user object
-  return res.status(201).send(new_user);
+  try {
+    
+    const new_user = await user.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      phoneNumber: req.body.phoneNumber,
+    });
+  
+    // TODO : return the created user object
+    return res.status(201).send(new_user);
+  } catch (error) {
+    return res.status(400).send(null)
+  }
 }
 
 async function checkIfUserExists(req, res) {
