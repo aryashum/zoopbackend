@@ -38,6 +38,10 @@ const storeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    closesBy: {
+      type: Date,
+      required: true,
+    }
   },
   { timestamps: true }
 );

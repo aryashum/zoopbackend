@@ -1,6 +1,8 @@
 const { default: mongoose, get } = require("mongoose");
 const { user } = require("../models/user");
 const { cart } = require("../models/cart");
+const nodemailer = require('nodemailer');
+const { transporter, email } = require("../utils/nodemailer");
 
 async function createUserAccount(req, res) {
   // TODO : instantiate user schema with particular values present in request
@@ -12,7 +14,21 @@ async function createUserAccount(req, res) {
       password: req.body.password,
       phoneNumber: req.body.phoneNumber,
     });
-  
+
+    // Sending a thank you mail
+    let mailOptions = {
+      from: email,
+      to: req.body.email,
+      subject: 'Welome to Zoop',
+      html: {path: 'views/emailTemplate.html'}
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        // console.log('Email sent: ' + info.response);
+      }
+    });
     // TODO : return the created user object
     return res.status(201).send(new_user);
   } catch (error) {
