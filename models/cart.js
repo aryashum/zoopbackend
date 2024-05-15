@@ -31,6 +31,10 @@ const cartSchema = mongoose.Schema(
       type: Boolean,
       default:false
     },
+    isServerd: {
+      type: Boolean,
+      default: false
+    },
     totalAmount:{
       type: Number,
       required: true

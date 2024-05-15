@@ -35,8 +35,19 @@ async function checkIfStoreExists(req, res) {
   }
 
 }
+async function getAllStores(req,res){
+
+  try {
+    const all_stores = await store.find({});
+    return res.status(200).send(all_stores)
+  } catch (err) {
+    res.status(400).send(null)
+  }
+
+}
 
 module.exports = {
   createStoreAccount,
   checkIfStoreExists,
+  getAllStores,
 };
