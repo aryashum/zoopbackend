@@ -19,12 +19,13 @@ async function createProduct(req, res) {
 }
 
 async function getProductsByStoreId(req, res) {
-  
   try {
-    const products = await product.find({ storeId: req.body.storeId });
+    const storeId = req.query.storeId; // Get the storeId from query parameters
+    const products = await product.find({ storeId: storeId }); 
     return res.status(200).send(products);
-  }catch (error) {
-    return res.status(400).send(null) 
+  } catch (error) {
+    console.error(error);
+    return res.status(400).send(null);
   }
 }
 

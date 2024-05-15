@@ -5,6 +5,7 @@ const storeRouter = express.Router();
 const {
   createStoreAccount,
   checkIfStoreExists,
+  getAllStores
 } = require("../controllers/storeControl");
 const {
   createProduct,
@@ -18,6 +19,9 @@ const {
 const {
   getCartByStoreId
 } = require('../controllers/cartControl')
+
+storeRouter.route('/')
+.get(getAllStores)
 
 // Define sub route for store signin
 storeRouter.route("/signin")
