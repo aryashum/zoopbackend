@@ -1,7 +1,8 @@
 
 const Razorpay = require('razorpay')
 const crypto = require("crypto");
-const {cart} = require('../models/cart')
+const {cart} = require('../models/cart');
+const { transporter, email } = require('../utils/nodemailer');
 
 async function createRazorpayOrder (req, res){
     try {
@@ -42,7 +43,7 @@ async function validateOrder (req, res){
         return res.status(400).null(null);
       }
       
-  
+      
       const temp_cart = await cart.findOneAndUpdate(
         { _id: cartId },
         {
@@ -58,16 +59,43 @@ async function validateOrder (req, res){
 
 
       // Send the mail notification / whatsapp notification
-  
+      const data = {
+        text: razorpay_signature,
+        size: 250,
+        dark: '#38bdf8',
+        light: '#000000'
+      };
+
+      // Construct query parameters from data object
+      const queryParams = Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+
+      const BASEURL = 'https://quickchart.io/qr'
+      const QR_URL = `${BASEURL}?${queryParams}`;
+
+
+      let mailOptions = {
+        from: email,
+        to: 'aryashu448@gmail.com',
+        subject: 'Your order is placed 😋',
+        html: `<img src=${QR_URL} alt="error occured"> <br> <h2>Scan this QR to collect your meal 🚀❤️ </h2>`
+      };
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          // console.log('Email sent: ' + info.response);
+        }
+      });
+
       return res.status(201).send({"message":temp_cart.razorpayPaymentId});
     } catch (error) {
       return res.status(400).send(null)
     }
-  
 
     
-  }
-
+}
 module.exports = {
     createRazorpayOrder,
     validateOrder
