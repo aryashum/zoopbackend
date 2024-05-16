@@ -9,6 +9,7 @@ const storeSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      unique: true
     },
     password: {
       type: String,
@@ -33,6 +34,7 @@ const storeSchema = mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true
     },
     adminName: {
       type: String,
@@ -41,6 +43,10 @@ const storeSchema = mongoose.Schema(
     closesBy: {
       type: Date,
       required: true,
+    },
+    opensBy: {
+      type: Date,
+      required: true
     }
   },
   { timestamps: true }

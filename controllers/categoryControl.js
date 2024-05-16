@@ -20,7 +20,7 @@ async function getCategoriesByStoreId(req, res) {
     const projection = { _id: 1, name: 1 };
   
     const categories = await category
-      .find({ storeId: req.body.storeId })
+      .find({ storeId: req.query.storeId })
       .select(projection);
   
     return res.status(200).send(categories);

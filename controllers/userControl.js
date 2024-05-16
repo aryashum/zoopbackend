@@ -20,7 +20,7 @@ async function createUserAccount(req, res) {
       from: email,
       to: req.body.email,
       subject: 'Welome to Zoop',
-      html: {path: 'views/emailTemplate.html'}
+      html: '<h1>You have been succesfully registered</h1>'
     };
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
