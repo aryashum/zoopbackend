@@ -15,8 +15,6 @@ process.env.STATUS === "dev"
 // We define our Middlewares
 
 const {corsMiddle} = require('./middlewares/cors.js')
-
-
 app.use(express.json());
 app.use(corsMiddle)
 app.use(express.urlencoded({ extended: true }));

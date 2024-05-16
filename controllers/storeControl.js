@@ -1,4 +1,5 @@
 const { store } = require("../models/store");
+const { transporter,email } = require("../utils/nodemailer");
 
 async function createStoreAccount(req, res) {
   try {
@@ -10,9 +11,25 @@ async function createStoreAccount(req, res) {
       phoneNumber: req.body.phoneNumber,
       location: req.body.location,
       adminName: req.body.adminName,
+      closesBy: Date(req.body.closesBy),
+      opensBy: Date(req.body.opensBy)
     });
-    // TODO : return the created store object ,
-
+    
+    // Sending a thank you mail
+    let mailOptions = {
+      from: email,
+      to: req.body.email,
+      subject: 'Welome to Zoop',
+      html: '<h1>You have been succesfully registered</h1>'
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        // console.log('Email sent: ' + info.response);
+      }
+    });
+    // TODO : return the created store object ,s
     return res.status(201).send(new_store);
   } catch (error) {
     return res.status(400).send(null);

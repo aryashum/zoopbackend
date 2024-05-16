@@ -9,7 +9,7 @@ async function createProduct(req, res) {
       price: req.body.price,
       storeId: req.body.storeId,
       image: req.body.image,
-      isVeg: req.body.isVeg
+      isVeg: Boolean(req.body.isVeg)
     });
     // We return the created object , null if not created
     return res.status(201).send(new_product);

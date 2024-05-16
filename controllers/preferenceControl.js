@@ -22,7 +22,7 @@ async function getPreferredFoodItems(req,res){
 
     try {
             
-        const updatedUser = await user.find({ _id: req.query.userId })
+        const updatedUser = await user.findOne({ _id: req.query.userId })
         res.status(201).send(updatedUser.favouriteProducts);
     } catch (error) {
         res.status(400).send(null)
@@ -40,6 +40,7 @@ async function addPreferedStore(req,res){
             { $push: { favouriteStores: req.body.storeId } },
             { new: true, useFindAndModify: false }
         );
+        console.log(updatedUser)
         res.status(201).send(updatedUser);
     } catch (error) {
         res.status(400).send(null)
@@ -51,7 +52,7 @@ async function getPreferredStores(req,res){
 
     try {
             
-        const updatedUser = await user.find({ _id: req.query.userId })
+        const updatedUser = await user.findOne({ _id: req.query.userId })
         res.status(201).send(updatedUser.favouriteStores);
     } catch (error) {
         res.status(400).send(null)
