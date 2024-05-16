@@ -9,8 +9,8 @@ preferenceRouter.route('/product')
 .post(addPreferedFoodItem)
 
 preferenceRouter.route('/store')
-.get(addPreferedStore)
-.post(getPreferredStores)
+.post(addPreferedStore)
+.get(getPreferredStores)
 
 
 module.exports = {
