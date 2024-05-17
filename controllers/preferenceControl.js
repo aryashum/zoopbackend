@@ -18,6 +18,24 @@ async function addPreferedFoodItem(req,res){
 
 }
 
+async function deletePreferredFoodItem(req,res){
+
+    try {
+        
+        const new_user = await user.findOneAndUpdate({_id:req.body.userId},
+            {$pull: { favouriteProducts: req.body.productId }},
+            { new: true, useFindAndModify: false }
+        )
+
+        res.status(200).send(new_user)
+
+    } catch (error) {
+        res.status(400).send(null)
+        
+    }
+
+}
+
 async function getPreferredFoodItems(req,res){
 
     try {
@@ -60,10 +78,30 @@ async function getPreferredStores(req,res){
 
 }
 
+async function deletePreferredStore(req,res){
+
+    try {
+        
+        const new_user = await user.findOneAndUpdate({_id:req.body.userId},
+            {$pull: { favouriteStores: req.body.storeId }},
+            { new: true, useFindAndModify: false }
+        )
+
+        res.status(200).send(new_user)
+
+    } catch (error) {
+        res.status(400).send(null)
+        
+    }
+
+}
+
 
 module.exports = {
     getPreferredFoodItems,
     addPreferedFoodItem,
     addPreferedStore,
-    getPreferredStores
+    getPreferredStores,
+    deletePreferredFoodItem,
+    deletePreferredStore
 }
