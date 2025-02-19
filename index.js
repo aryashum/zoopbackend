@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+//npm start
+
 // Define our Express Instance
 const app = express();
 // We choose the port based on the mode
