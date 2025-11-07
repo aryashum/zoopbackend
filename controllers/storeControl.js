@@ -1,6 +1,6 @@
 const { store } = require("../models/store");
 const { transporter,email } = require("../utils/nodemailer");
-
+const mongoose = require("mongoose");
 async function createStoreAccount(req, res) {
   try {
     // TODO : instantiate store schema with particular values present in request
@@ -52,13 +52,15 @@ async function checkIfStoreExists(req, res) {
   }
 
 }
-async function getAllStores(req,res){
-
+async function getAllStores(req,res) {
   try {
+    console.log("DB ready?", mongoose.connection.readyState); // <<<
     const all_stores = await store.find({});
-    return res.status(200).send(all_stores)
+    console.log(all_stores)
+    return res.status(200).json(all_stores);
   } catch (err) {
-    res.status(400).send(null)
+    console.error(err);
+    return res.status(500).json({error: err.message});
   }
 
 }

@@ -20,7 +20,7 @@ const {
   getCartByStoreId
 } = require('../controllers/cartControl')
 
-storeRouter.route('/')
+storeRouter.route('/stores')
 .get(getAllStores)
 
 // Define sub route for store signin
